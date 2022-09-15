@@ -1,0 +1,4 @@
+.vscode/settings.json
+/expedientes/settings.py
+db.sqlite3
+*.pyc 
