@@ -8,6 +8,10 @@ class Barrio(models.Model):
     def __str__(self):
         return self.descripcion
 
+    def save(self, *args, **kwargs):
+        self.descripcion = self.descripcion.upper()
+        super(Barrio, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name_plural = "Barrios"
 

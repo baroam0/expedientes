@@ -10,6 +10,10 @@ class Estado(models.Model):
     def __str__(self):
         return self.descripcion
 
+    def save(self, *args, **kwargs):
+        self.descripcion = self.descripcion.upper()
+        super(Estado, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name_plural = "Estados"
 
@@ -27,6 +31,11 @@ class Documento(models.Model):
 
     def __str__(self):
         return self.nomenclatura.upper()
+    
+    def save(self, *args, **kwargs):
+        self.nomenclatura = self.nomenclatura.upper()
+        self.descripcion = self.descripcion.upper()
+        super(Documento, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Documentos"

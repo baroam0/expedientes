@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+
+        <br>
+
+        <div class="row">    
+                {% if mensaje %}
+                    <div class="alert alert-danger" role="alert">
+                        {{mensaje}}
+                    <!--button type="button" class="btn btn-link btn-sm" onclick="location.href='/pacienteobrasocialnuevo/'">
+                            <i class="fas fa-pencil-alt"></i>
+                    </button-->
+
+                    <button type="button" data-toggle="modal" data-target="#modal-obrasocial" class="btn btn-link btn-sm">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    </div>
+                {% endif %}    
+        </div>
+
+
+        <div class="pure-g">
+            <div class="pure-u-1-5"><p></p></div>
+            <div class="pure-u-3-5">
+
+                <form class="pure-form" action="/documentos/listado" method="GET">
+            
+                    <input class="pure-input" id="param" name="param" placeholder="Buscar....">
+                    <button type="submit" class="pure-button" title="Buscar!">
+                        Buscar
+                    </button>
+
+                </form>
+                
+                <br>
+
+                <table class="pure-table pure-table-horizontal">
+                    <thead>
+                        <tr>
+                            <th>Nomenclatura</th>
+                            <th>Descripcion</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for resultado in resultados %}
+                            <tr>
+                                <td>{{resultado.nomenclatura}}</td>
+                                <td>{{resultado.descripcion}}</td>
+                                <td>{{resultado.estado}}</td>
+                                <td>
+                                    <button type="button" class="pure-button" onclick="location.href='/documentos/editar/' + {{ resultado.pk }}">
+                                        Editar
+                                    </button>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="pure-u-1-5"><p></p></div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+
+{% block js_extra %}
+
+    <script>
+        $(document).ready(function(){
+            $("#id_nomenclatura").attr('placeholder', '{{form.nomenclatura.label}}');
+            $("#id_descripcion").attr('placeholder', '{{form.descripcion.label}}');
+        });
+    </script>
+
+{% endblock %}
