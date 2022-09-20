@@ -3,6 +3,7 @@
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
+from django.db.models import Q
 
 from .models import Documento
 from .forms import DocumentoForm
@@ -37,7 +38,7 @@ def documentonuevo(request):
             messages.success(
                 request,
                 "SE HAN GUARDADO LOS DATOS")
-            return redirect('/documentolistado/')
+            return redirect('/documentos/listado/')
         else:
             return render(
                 request,

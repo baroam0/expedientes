@@ -33,6 +33,10 @@
                         Buscar
                     </button>
 
+                    <button type="button" class="pure-button pure-button-primary" onclick="location.href='/documentos/nuevo/'">
+                        Nuevo
+                    </button>
+
                 </form>
                 
                 <br>
@@ -57,7 +61,6 @@
                                     <button type="button" class="pure-button" onclick="location.href='/documentos/editar/' + {{ resultado.pk }}">
                                         Editar
                                     </button>
-
                                 </td>
                             </tr>
                         {% endfor %}
