@@ -66,6 +66,22 @@
                         {% endfor %}
                     </tbody>
                 </table>
+
+
+                {% if resultados.has_previous %}
+                    <a class="pure-button" href="??page=1">Primero</a>
+                    <a class="pure-button" href="?page={{ resultados.previous_page_number }}">Anterior</a>
+                {% endif %}
+                    
+                <a class="page-link">
+                    Pag. {{ resultados.number }} de {{ resultados.paginator.num_pages }}
+                </a>    
+
+                {% if resultados.has_next %}
+                    <a class="pure-button" href="?page={{ resultados.next_page_number }}">Siguiente</a>
+                    <a class="pure-button" href="?page={{ resultados.paginator.num_pages }}">Ultimo</a>
+                {% endif %}
+
             </div>
             <div class="pure-u-1-5"><p></p></div>
         </div>

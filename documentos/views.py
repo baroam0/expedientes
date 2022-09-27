@@ -19,7 +19,7 @@ def documentolistado(request):
     else:
         consulta = Documento.objects.all().order_by('estado')
 
-    paginador = Paginator(consulta, 20)
+    paginador = Paginator(consulta, 1)
 
     if "page" in request.GET:
         page = request.GET.get('page')
